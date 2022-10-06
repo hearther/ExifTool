@@ -157,6 +157,8 @@ public class ExifTool : Sequence {
                 metadata[key]=String(cols[1]).trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
+        try! outputPipe.fileHandleForReading.close()
+        try! errorPipe.fileHandleForReading.close()
         ExifTool.logger.info("Retreive \(self.metadata.count) metadata for \(self.filepath)")
     }
     
